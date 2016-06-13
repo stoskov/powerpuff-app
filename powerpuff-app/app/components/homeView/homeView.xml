@@ -1,17 +1,13 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
-    <Page.actionBar>
-        <widgets:action-bar />
-    </Page.actionBar>
-
-    <StackLayout>
-        <!-- additional view content -->
-        <!-- START_CUSTOM_CODE_homeView -->
-        <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
-        <!-- END_CUSTOM_CODE_homeView -->
-        <!--<div class="phone">
-            <object id="svg1" data="../images/phone.svg" type="image/svg+xml"></object>
-        </div>-->
-        <Image src="~/images/phone.png" stretch ="none" />
-    </StackLayout>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer" 
+      xmlns:widgets="utils/widgets" 
+      loaded="pageLoaded">
+    <drawer:RadSideDrawer>
+        <drawer:RadSideDrawer.mainContent>
+            <Label text="Home View"></Label>
+        </drawer:RadSideDrawer.mainContent>
+        <drawer:RadSideDrawer.drawerContent>
+            <widgets:drawer-content />
+        </drawer:RadSideDrawer.drawerContent>
+    </drawer:RadSideDrawer>
 </Page>
