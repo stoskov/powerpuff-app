@@ -10,4 +10,8 @@
             <widgets:drawer-content />
         </drawer:RadSideDrawer.drawerContent>
     </drawer:RadSideDrawer>
+    
+    <StackLayout>
+        <Image src='~/images/phone.png'/>
+    </StackLayout>
 </Page>
