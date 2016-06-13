@@ -4,14 +4,15 @@
       loaded="pageLoaded">
     <drawer:RadSideDrawer>
         <drawer:RadSideDrawer.mainContent>
-            <Label text="Home View"></Label>
+            <GridLayout rows="auto, *">
+                <StackLayout row="1">
+                    <Image row="1" src='~/images/phone.png'/>                  
+                </StackLayout>
+                <ActivityIndicator row="1" busy="{{ isLoading }}" /> 
+         </GridLayout>
         </drawer:RadSideDrawer.mainContent>
         <drawer:RadSideDrawer.drawerContent>
             <widgets:drawer-content />
         </drawer:RadSideDrawer.drawerContent>
     </drawer:RadSideDrawer>
-    
-    <StackLayout>
-        <Image src='~/images/phone.png'/>
-    </StackLayout>
 </Page>

@@ -7,33 +7,42 @@ var isInit = true,
     dialogs = require("ui/dialogs"),
     accelerometer = require("nativescript-accelerometer"),
     vibrator = require("nativescript-vibrate");
-// 
-// additional functions
+
+function attachToAccelerometer() {
+    //vibrator.vibration("1000");
+    var amount = 0;
+    accelerometer.startAccelerometerUpdates(function (data) {
+        console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
+
+        if (data.x + data.y > 1) {
+            amount++;
+            if (amount > 10) {
+                vibrator.vibration("500");
+            }
+        }
+    });
+}
+
 function pageLoaded(args) {
     var page = args.object;
 
     helpers.platformInit(page);
     page.bindingContext = viewModel;
-    // additional pageLoaded
 
     if (isInit) {
         isInit = false;
 
         // additional pageInit
     }
-    
-    //vibrator.vibration("1000");
-    var amount = 0;
-    accelerometer.startAccelerometerUpdates(function(data) {
-        console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
-        
-        if(data.x + data.y > 1) {
-            amount++;
-            if(amount > 10) {
-                vibrator.vibration("500");
-            }
-        }
-    });
+
+    helpers.checkAuthentication()
+        .then(function () {
+        	setTimeout(function(){
+            viewModel.set("isLoading", false);    
+            }, 2000);
+        	
+            attachToAccelerometer();
+        });
 }
 
 // START_CUSTOM_CODE_homeView
