@@ -21,6 +21,7 @@ menuItems = [{
     "moduleName": "components/authenticationView/authenticationView",
     "icon": "\ue1ff",
     "context": {
+        
         "logout": true
     }
 }];
@@ -30,7 +31,6 @@ drawerContentViewModel.set('backButtonHidden', true);
 
 function loaded(args) {
     var page = args.object;
-	console.log("test")
     helpers.platformInit(page);
     page.bindingContext = drawerContentViewModel;
     drawerContentViewModel.set('pageTitle', 'nativeScriptApp');

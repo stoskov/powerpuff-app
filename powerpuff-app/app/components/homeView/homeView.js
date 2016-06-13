@@ -3,7 +3,9 @@ var isInit = true,
     helpers = require('../../utils/widgets/helper'),
     navigationProperty = require('../../utils/widgets/navigation-property'),
     // additional requires
-    viewModel = require('./homeView-view-model');
+    viewModel = require('./homeView-view-model'),
+    dialogs = require("ui/dialogs"),
+    accelerometer = require("nativescript-accelerometer");
 
 // additional functions
 function pageLoaded(args) {
@@ -18,6 +20,16 @@ function pageLoaded(args) {
 
         // additional pageInit
     }
+    
+    var i = 0;
+    
+    dialogs.alert("aloha!");
+    accelerometer.startAccelerometerUpdates(function(data) {
+        dialogs.alert("x: " + data.x + "y: " + data.y + "z: " + data.z);
+    i++;
+    if(i>5) {
+        accelerometer.stopAccelerometerUpdates();
+    }});
 }
 
 // START_CUSTOM_CODE_homeView
