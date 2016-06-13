@@ -41,22 +41,6 @@ Service.prototype.signin = function(args, successCallback, errorCallback) {
         }, errorCallback);
 };
 
-Service.prototype.signout = function(successCallback, errorCallback) {
-    if (!errorCallback) {
-        errorCallback = function() {};
-    }
-    return this.getCurrentUser().then(function _logoutUser() {
-        return dataService.Users.logout()
-            .then(function(e) {
-                localSettings.remove(consts.accessTokenKey);
-                localSettings.remove(consts.accessTokenTypeKey);
-                localSettings.remove(consts.accessTokenPrincipalIdKey);
-
-                successCallback();
-            }, errorCallback);
-    }, errorCallback);
-};
-
 Service.prototype.register = function(args, successCallback, errorCallback) {
     validateArgs(args);
 
