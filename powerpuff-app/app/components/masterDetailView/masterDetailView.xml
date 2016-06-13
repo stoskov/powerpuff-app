@@ -1,12 +1,19 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      xmlns:widgets="utils/widgets" 
+      xmlns:calendar="nativescript-telerik-ui-pro/calendar"
+      loaded="pageLoaded">
     <Page.actionBar>
         <widgets:action-bar />
     </Page.actionBar>
 
     <StackLayout>
 
+		<calendar:RadCalendar 
+        		id="calendar"
+                eventSource="{{ calendarEvents }}"
+                inlineEventSelected="{{ onEventSelected }}"
+                eventsViewMode="Popover" />
         <GridLayout rows="auto, *">
-
             <ListView row="1" items="{{ listItems }}" itemTap="onListViewItemTap">
                 <ListView.itemTemplate>
                     <StackLayout>
@@ -28,7 +35,6 @@
 
         <!-- START_CUSTOM_CODE_masterDetailView -->
         <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
         <!-- END_CUSTOM_CODE_masterDetailView -->
     </StackLayout>
 </Page>

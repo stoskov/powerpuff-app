@@ -3,7 +3,6 @@
         "tns-core-modules": "2.0.1",
         "nativescript-social-share": "1.1.1",
         "nativescript-calendar": "1.0.5",
-        "nativescript-push-notifications": "0.0.13",
         "nativescript-telerik-ui-pro": "1.1.1"
     },
     "devDependencies": {}
