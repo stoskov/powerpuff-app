@@ -17,7 +17,7 @@ ViewModel = new Observable({
         var that = this;
 
         dialogs.alert("startListeningForShake");
-        accelerometer.startAccelerometerUpdates(function(data) { that._accelerometerCallback(data); });
+        // accelerometer.startAccelerometerUpdates(function(data) { that._accelerometerCallback(data); });
 	},
     
     stopListeningForShake: function() {
