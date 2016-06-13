@@ -4,7 +4,9 @@
         "nativescript-social-share": "1.1.1",
         "nativescript-calendar": "1.0.5",
         "nativescript-push-notifications": "0.0.13",
-        "nativescript-telerik-ui-pro": "1.1.1"
+        "nativescript-telerik-ui-pro": "1.1.1",
+        "nativescript-accelerometer": "0.3.1",
+        "nativescript-vibrate": "1.1.1"
     },
     "devDependencies": {}
 }
