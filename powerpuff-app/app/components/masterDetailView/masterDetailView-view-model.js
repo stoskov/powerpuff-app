@@ -22,13 +22,13 @@ ViewModel.calendarEvents =  function _generateEvents() {
         var now = new Date();
         var startDate = new Date(now.getFullYear(), now.getMonth(), now.getDay(), i * 2 - 1);
         var endDate = startDate;
-        var event = new calendarModule.CalendarEvent(`Event ${i}`, startDate, endDate, false);
+        var event = new calendarModule.CalendarEvent(`Event No. ${i}`, startDate, endDate, false);
         events.push(event);
     }
     return events;
 }();
 ViewModel.onEventSelected = function onEventSelected(data) {
-    alert(JSON.stringify(data.eventData));
+    alert(JSON.stringify(data.eventData.title));
 }
 
 // END_CUSTOM_CODE_masterDetailView

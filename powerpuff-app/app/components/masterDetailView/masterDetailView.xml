@@ -12,7 +12,7 @@
         		id="calendar"
                 eventSource="{{ calendarEvents }}"
                 inlineEventSelected="{{ onEventSelected }}"
-                eventsViewMode="Popover" />
+                eventsViewMode="Inline" />
         <GridLayout rows="auto, *">
             <ListView row="1" items="{{ listItems }}" itemTap="onListViewItemTap">
                 <ListView.itemTemplate>

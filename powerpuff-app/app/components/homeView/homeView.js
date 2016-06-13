@@ -23,7 +23,7 @@ function pageLoaded(args) {
     }
     
     //vibrator.vibration("1000");
-    viewModel.startListeningForShake();
+ //    viewModel.startListeningForShake();
 }
 
 // START_CUSTOM_CODE_homeView
