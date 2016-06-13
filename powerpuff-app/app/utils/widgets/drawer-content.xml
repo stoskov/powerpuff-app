@@ -1,0 +1,15 @@
+<StackLayout cssClass="drawerContent" loaded="loaded">
+    <StackLayout cssClass="headerContent">
+        <Label text="Menu" />
+    </StackLayout>
+    <StackLayout cssClass="drawerMenuContent">
+        <ListView class="list" items="{{ menuItems }}" itemTap="menuItemTap">
+            <ListView.itemTemplate>
+                <GridLayout cssClass="list-item" columns="auto, *">
+                    <Label cssClass="list-icon km-icon" text="{{ icon }}" />
+                    <Label cssClass="list-title" col="1" text="{{ title }}" textWrap="true" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout>
+</StackLayout>

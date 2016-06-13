@@ -4,6 +4,9 @@ var isInit = true,
     navigationProperty = require('../../utils/widgets/navigation-property'),
     // additional requires
     viewModel = require('./homeView-view-model');
+    // dialogs = require("ui/dialogs"),
+    // accelerometer = require("nativescript-accelerometer"),
+    // vibrator = require("nativescript-vibrate");
 
 // additional functions
 function pageLoaded(args) {
@@ -18,6 +21,9 @@ function pageLoaded(args) {
 
         // additional pageInit
     }
+    
+    //vibrator.vibration("1000");
+    viewModel.startListeningForShake();
 }
 
 // START_CUSTOM_CODE_homeView
