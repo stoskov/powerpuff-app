@@ -15,21 +15,27 @@ function pageLoaded(args) {
     page.bindingContext = viewModel;
     // additional pageLoaded
 
-    if (isInit) {
-        isInit = false;
+    helper.checkAuthentication()
+        .then(function () {
+            viewModel.set('isLoading', false);
 
-        // additional pageInit
-    }
-    
-    var i = 0;
-    
-    dialogs.alert("aloha!");
-    accelerometer.startAccelerometerUpdates(function(data) {
-        dialogs.alert("x: " + data.x + "y: " + data.y + "z: " + data.z);
-    i++;
-    if(i>5) {
-        accelerometer.stopAccelerometerUpdates();
-    }});
+            if (isInit) {
+                isInit = false;
+
+                // additional pageInit
+            }
+
+            var i = 0;
+
+            dialogs.alert("aloha!");
+            accelerometer.startAccelerometerUpdates(function (data) {
+                dialogs.alert("x: " + data.x + "y: " + data.y + "z: " + data.z);
+                i++;
+                if (i > 5) {
+                    accelerometer.stopAccelerometerUpdates();
+                }
+            });
+        });
 }
 
 // START_CUSTOM_CODE_homeView

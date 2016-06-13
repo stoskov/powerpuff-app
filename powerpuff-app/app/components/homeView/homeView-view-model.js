@@ -6,7 +6,7 @@ var ViewModel,
 // additional requires
 
 ViewModel = new Observable({
-
+	isLoading: true,
     pageTitle: 'Home View',
     // additional properties
     

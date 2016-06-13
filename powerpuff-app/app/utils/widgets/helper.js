@@ -1,6 +1,8 @@
 'use strict';
 var frame = require('ui/frame'),
-    platform = require('platform');
+    platform = require('platform'),
+    settings = require("./appSettings"),
+    dataProvider = require("../../dataProviders/powerpuffApp");
 
 function platformInit(page) {
     var top = frame.topmost(),
@@ -64,6 +66,19 @@ function processImage(img, dbConfiguration) {
         img = setup.scheme + ':' + setup.url + setup.appId + '/Files/' + img + '/Download';
     }
     return img;
+}
+
+function checkAuthentication() {
+    return dataProvider.Users.currentUser()
+        .then(function (data) {
+            if (!data.result) {
+                navigate(settings.loginModule);
+                return Promise.reject();
+            }
+        })
+        .catch(function () {
+            navigate(settings.loginModule);
+        });
 }
 
 exports.back = back;
