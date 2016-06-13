@@ -1,29 +1,47 @@
 'use strict';
 var ViewModel,
-    Observable = require('data/observable').Observable;
-    //accelerometer = require("nativescript-accelerometer"),
-    //dialogs = require("ui/dialogs");
+    Observable = require('data/observable').Observable,
+    accelerometer = require("nativescript-accelerometer"),
+    vibrator = require("nativescript-vibrate"),
+    dialogs = require("ui/dialogs");
 // additional requires
 
 ViewModel = new Observable({
 
     pageTitle: 'Home View',
+    shaken: false,
+    callback: true,
     // additional properties
     
-    //init: function() {
-    //    var that = this;
-    //    accelerometer.startAccelerometerUpdates(function(data) {
-    //    dialogs.alert("x: " + data.x + "y: " + data.y + "z: " + data.z);});
-    //},
+    startListeningForShake: function() {
+        var that = this;
+
+        dialogs.alert("startListeningForShake");
+        accelerometer.startAccelerometerUpdates(function(data) { that._accelerometerCallback(data); });
+	},
     
-    //_accelerometerUpdates: function(data) {
-    //    var that = this;        
-    //    
-    //    dialogs.alert("Shaken x:" + data.x + " y:" + data.y + " z:" + data.z);
-    //    if (data.x + data.y + data.z > 10) {
-    //        dialogs.alert("Shaken not stirred!");
-    //    }
-    //}
+    stopListeningForShake: function() {
+        var that = this;
+        dialogs.alert("stopListeningForShake");
+        accelerometer.stopAccelerometerUpdates();
+    },
+    
+    _accelerometerCallback: function(data) {
+        var that = this;
+        
+        if(that.callback) {
+            dialogs.alert("_accelerometerCallback: data=" + data);
+            callback = false;
+        }
+            
+        if (data.x > 0.60 || data.y > 60) {
+            
+            that.stopListeningForShake();
+            vibrator.vibration("1000");
+            that.shaken = true;
+        }
+    }
+    
 });
 
 // START_CUSTOM_CODE_homeView
