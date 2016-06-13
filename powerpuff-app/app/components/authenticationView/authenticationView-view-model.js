@@ -1,57 +1,81 @@
 'use strict';
-var ViewModel,
-    Observable = require('data/observable').Observable;
-// additional requires
+var LoginViewModel,
+	FacebookLoginHandler = require("nativescript-facebook-login"),
+    frameModule = require("ui/frame"),
+    topmost = frameModule.topmost,
+    Observable = require('data/observable').Observable,
+    el = require('');
 
-ViewModel = new Observable({
+LoginViewModel = new Observable({
 
-    pageTitle: 'Authentication',
+    pageTitle: 'Log in',
 
-    signinVisibility: 'visible',
-    registerVisibility: 'collapsed',
-    displayName: '',
-    email: '',
-    password: '',
+    onFbLogin: function() {
+        // confirm(require("application").android.foregroundActivity);
+        
+        // confirm("OK?");
+        
+        var successCallback = function(result) {
+            confirm("success callback?");
+            var token;
+            
+            if (topmost().android){
+              token = result.getAccessToken().getToken();
+            }
+            else if (topmost().ios){
+              token = result.token.tokenString
+            }
+            alert(token);
+        }
 
-    events: {
-        register: 'register',
-        showRegister: 'showRegister',
-        showSignin: 'showSignin',
-        signin: 'signin'
-    },
+        var cancelCallback = function() {
+            alert("Login was cancelled");
+        }
 
-    onSignin: function() {
-        this.notify({
-            eventName: this.events.signin,
-            email: this.get('email'),
-            password: this.get('password')
-        });
-    },
+        var failCallback = function(error) {
+            var errorMessage = "Error with Facebook";
+    
+           if (error) {
+                if (topmost().ios) {
+                    if (error.localizedDescription) {
+                        errorMessage += ": " + error.localizedDescription;
+                    }
+                    else if (error.code) {
+                        errorMessage += ": Code " + error.code;
+                    }
+                    else {
+                        errorMessage += ": " + error;   
+                    }
+                }
+                else if (topmost().android) {
+                    if (error.getErrorMessage) {
+                        errorMessage += ": " + error.getErrorMessage();
+                    }
+                    else if (error.getErrorCode) {
+                        errorMessage += ": Code " + error.getErrorCode();
+                    }
+                    else {
+                        errorMessage += ": " + error;   
+                    }
+                }
+            }
+            
+            alert(errorMessage);
+        }  
+       
+    
+        if (topmost().ios) {
+            confirm("iOS?");
+            FacebookLoginHandler.init(2);
+        }
 
-    onShowRegister: function() {
-        this.set('signinVisibility', 'collapsed');
-        this.set('registerVisibility', 'visible');
-    },
-
-    onRegister: function() {
-        this.notify({
-            eventName: this.events.register,
-            displayName: this.get('displayName'),
-            password: this.get('password'),
-            email: this.get('email')
-        });
-    },
-
-    onShowSignin: function() {
-        this.set('signinVisibility', 'visible');
-        this.set('registerVisibility', 'collapsed');
-    },
-    // additional properties
-
+        else if (topmost().android) {
+            //confirm("Android?");
+            FacebookLoginHandler.init();
+        }
+        FacebookLoginHandler.registerCallback(successCallback, cancelCallback, failCallback); 
+        FacebookLoginHandler.logInWithPublishPermissions(["publish_actions"]);     
+    }
 });
 
-// START_CUSTOM_CODE_authenticationView
-// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
-
-// END_CUSTOM_CODE_authenticationView
-module.exports = ViewModel;
+module.exports = LoginViewModel;
