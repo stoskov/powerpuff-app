@@ -1,9 +1,9 @@
 'use strict';
 var ViewModel,
     Observable = require('data/observable').Observable,
-    accelerometer = require("nativescript-accelerometer"),
-    vibrator = require("nativescript-vibrate"),
-    dialogs = require("ui/dialogs");
+    vibrator = require('nativescript-vibrate'),
+    dialogs = require('ui/dialogs'),
+    accelerometer = require('nativescript-accelerometer'),
 // additional requires
 
 ViewModel = new Observable({
@@ -11,37 +11,48 @@ ViewModel = new Observable({
     pageTitle: 'Home View',
     shaken: false,
     callback: true,
+    // shakeEvent: new shake({
+    //     threshold: 15, // optional shake strength threshold
+    // 	timeout: 1000 // optional, determines the frequency of event generation
+    // }),
     // additional properties
     
-    startListeningForShake: function() {
-        var that = this;
+    // startListeningForShake: function() {
+    //     var that = this;
 
-        dialogs.alert("startListeningForShake");
-        // accelerometer.startAccelerometerUpdates(function(data) { that._accelerometerCallback(data); });
-	},
+    //     dialogs.alert("startListeningForShake");
+    //     // myShakeEvent.start();
+
+    //     // //Register a shake event listener on window with your callback:
+    //     // window.addEventListener('shake', that._shakeEventDidOccur, false);
+    //     var amount = 0;
+    //     accelerometer.startAccelerometerUpdates(function(data) {
+    //         console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
+            
+    //         amount++;
+    //         if(amount > 10) {
+    //             that._shakeEventDidOccur();
+    //         }
+    //     });
+    // },
     
-    stopListeningForShake: function() {
-        var that = this;
-        dialogs.alert("stopListeningForShake");
-        accelerometer.stopAccelerometerUpdates();
-    },
-    
-    _accelerometerCallback: function(data) {
-        var that = this;
+    // stopListeningForShake: function() {
+    //     var that = this;
+    //     dialogs.alert("stopListeningForShake");
+    	
+    // 	// window.removeEventListener('shake', that._shakeEventDidOccur, false);
+    // 	// that.shake.stop();
+    // },
         
-        if(that.callback) {
-            dialogs.alert("_accelerometerCallback: data=" + data);
-            callback = false;
-        }
-            
-        if (data.x > 0.60 || data.y > 60) {
-            
-            that.stopListeningForShake();
-            vibrator.vibration("1000");
-            that.shaken = true;
-        }
-    }
-    
+    // _shakeEventDidOccur: function() {
+    //     var that = this;
+    //     //put your own code here etc.
+    //     dialogs.alert('shake!');
+    //     that.shaken = true;
+        
+    //     that.stopListeningForShake();
+    //     vibrator.vibration('200');
+    // }    
 });
 
 // START_CUSTOM_CODE_homeView
