@@ -1,7 +1,8 @@
 'use strict';
 var menuItems,
     observable = require('data/observable'),
-    navigationViewModel = new observable.Observable();
+    drawerContentViewModel = new observable.Observable(),
+    helpers = require('./helper');
 
 menuItems = [{
     "title": "Authentication",
@@ -24,7 +25,20 @@ menuItems = [{
     }
 }];
 
-navigationViewModel.set('menuItems', menuItems);
-navigationViewModel.set('backButtonHidden', true);
+drawerContentViewModel.set('menuItems', menuItems);
+drawerContentViewModel.set('backButtonHidden', true);
 
-module.exports = navigationViewModel;
+function loaded(args) {
+    var page = args.object;
+	console.log("test")
+    helpers.platformInit(page);
+    page.bindingContext = drawerContentViewModel;
+    drawerContentViewModel.set('pageTitle', 'nativeScriptApp');
+}
+
+function menuItemTap(args) {
+    helpers.navigate(drawerContentViewModel.menuItems[args.index]);
+}
+
+exports.loaded = loaded;
+exports.menuItemTap = menuItemTap;
