@@ -17,7 +17,8 @@ function attachToAccelerometer() {
         if (data.x + data.y > 1) {
             amount++;
             if (amount > 10) {
-                vibrator.vibration("500");
+//                vibrator.vibration(500);
+                amount = 0;
             }
         }
     });
