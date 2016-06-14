@@ -1,8 +1,9 @@
 'use strict';
 var ViewModel,
+    application = require('application'),
     Observable = require('data/observable').Observable,
     //vibrator = require('nativescript-vibrate'),
-    dialogs = require('ui/dialogs'),
+    dialog = require('nativescript-dialog'),
     dataService = require("../../dataProviders/data-service"),
     accelerometer = require('nativescript-accelerometer'),
     homeViewService = require('./homeView-service'),
@@ -19,24 +20,25 @@ ViewModel = new Observable({
 
     onSelectMood: function (params) {
         var that = this,
+            page = params.object.page,
             options = {
-                title: "Mood Selection",
+                title: "Choose Your Mood",
                 message: "Choose your mood",
-                cancelButtonText: "Cancel",
-                actions: ['happy', 'sad', 'determined', 'wise', 'funny', 'whatever']
+                cancelButtonText: "Cancel"
             };
 
-        dialogs.action(options)
-            .then((result) => {
-                that.mood = result;
+        page.showModal('./components/moodSelectorView/moodSelectorView', 'Select your mood', function (result) {
+            if (!result) {
+                return;
+            }
 
-                homeViewService.attachToAccelerometer(function () {
-                    var quote = that.getQuote(that.mood);
+            that.mood = result;
 
-                    that.set('shareVisibility', 'visible');
-
-                });
+            homeViewService.attachToAccelerometer(function () {
+                var quote = that.getQuote(that.mood);
+                that.set('shareVisibility', 'visible');
             });
+        });
     },
 
     share: function (params) {

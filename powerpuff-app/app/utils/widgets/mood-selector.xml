@@ -1,0 +1,13 @@
+<!--<GridLayout rows="*, *" columns="*, *, *">
+    <Label text="mood1" />
+    <Label text="mood2" col="1" />
+    <Label text="mood3" col="2" />
+    <Label text="mood4" row="1" />
+    <Label text="mood5" row="1" col="1" />
+    <Label text="mood6" row="1" col="2" />
+</GridLayout>-->
+
+<StackLayout>
+  <Label id="Label1" />
+  <Button text="Click!" /> 
+</StackLayout>
