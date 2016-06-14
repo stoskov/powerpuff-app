@@ -26,7 +26,7 @@ function pageLoaded(args) {
             viewModel.set("isLoading", false);    
             }, 2000);
         	
-            homeViewService.attachToAccelerometer();
+            homeViewService.attachToAccelerometer(function(){dialogs.alert("vibrated!")});
         });
 }
 
