@@ -5,7 +5,8 @@ var _,
     vibrator = require("nativescript-vibrate"),
     //app = require("application"),
     consts,
-    dialogs = require("ui/dialogs");
+    dialogs = require("ui/dialogs"),
+    timerId;
 
 function HomeViewService() {}
 
@@ -24,7 +25,7 @@ HomeViewService.prototype = {
                 if(Math.abs(oldData.x - data.x) > treshold || Math.abs(oldData.y - data.y) > treshold || Math.abs(oldData.z - data.z) > treshold) {
                     //dialogs.alert("stopAccelerometerUpdates");
                     accelerometer.stopAccelerometerUpdates();
-                    setTimeout(function() { that.attachToAccelerometer(callback)}, 3000);
+                    timerId = setTimeout(function() { that.attachToAccelerometer(callback)}, 3000);
 
                     console.log("Old x: " + oldData.x + "y: " + oldData.y + "z: " + oldData.z);
                     console.log("New x: " + data.x + "y: " + data.y + "z: " + data.z);
@@ -40,6 +41,9 @@ HomeViewService.prototype = {
     
 	detachFromAccelerometer: function() {
         try {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
 	        accelerometer.stopAccelerometerUpdates();
         } catch (e) {
             console.log("Error stopping accelerometer: " + e);
