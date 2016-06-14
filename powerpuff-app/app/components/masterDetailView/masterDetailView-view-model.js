@@ -16,7 +16,7 @@ ViewModel = new Observable({
 
 // START_CUSTOM_CODE_masterDetailView
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
-(function _generateEvents() {
+ViewModel.set('generateEvents', function _generateEvents() {
     return dataService.getUserQuotes().then(function (quotes) {
 	    var calendarEvents = [];
         for (var i = 0; i < quotes.result.length; i++) {
@@ -27,13 +27,13 @@ ViewModel = new Observable({
             event.raw = quotes.result[i];
             calendarEvents.push(event);
         }
-//        alert(calendarEvents.length + '\n' + JSON.stringify(calendarEvents));
+        alert(calendarEvents.length + '\n' + JSON.stringify(calendarEvents));
         ViewModel.set('calendarEvents', calendarEvents);
     })
 	.catch(function(err) {
 		alert("Something wrong happened: " + err);
  	});
-})();
+});
 
 ViewModel.onEventSelected = function onEventSelected(data) {
     socialShare.shareText(data.eventData.title, "How would you like to share this quote?");
