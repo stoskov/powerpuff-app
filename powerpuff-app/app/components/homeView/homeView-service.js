@@ -4,6 +4,7 @@ var _,
     accelerometer = require("nativescript-accelerometer"),
     vibrator = require("nativescript-vibrate"),
     //app = require("application"),
+    accelerometerAttached = false,
     consts,
     dialogs = require("ui/dialogs"),
     timerId;
@@ -14,8 +15,15 @@ HomeViewService.prototype = {
     vibrator_service: null,
     
     attachToAccelerometer: function (callback) {
+        if (accelerometerAttached) {
+            return;
+        }
+
         var that = this;
         var oldData = null;
+
+        accelerometerAttached = true;
+
         accelerometer.startAccelerometerUpdates(function (data) {
 //            console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
             
