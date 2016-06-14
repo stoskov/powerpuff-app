@@ -13,7 +13,7 @@ function getQuote(mood) {
     });
 }
 
-function getUserQoutes() {
+function getUserQuotes() {
     return provider.Users.currentUser()
         .then(function (e) {
             var filter = new TelerikBackendServices.Query();
