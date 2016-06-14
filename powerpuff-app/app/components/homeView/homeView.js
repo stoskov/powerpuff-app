@@ -4,7 +4,7 @@ var isInit = true,
     navigationProperty = require('../../utils/widgets/navigation-property'),
     // additional requires
     viewModel = require('./homeView-view-model'),
-    viewService = require('./homeView-service'),
+    homeViewService = require('./homeView-service'),
     dialogs = require("ui/dialogs");
 
 function pageLoaded(args) {
@@ -26,7 +26,7 @@ function pageLoaded(args) {
             viewModel.set("isLoading", false);    
             }, 2000);
         	
-            //service.attachToAccelerometer();
+            homeViewService.attachToAccelerometer();
         });
 }
 

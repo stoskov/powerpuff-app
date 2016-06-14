@@ -1,9 +1,9 @@
 'use strict';
 var ViewModel,
     Observable = require('data/observable').Observable,
-    vibrator = require('nativescript-vibrate'),
+    //vibrator = require('nativescript-vibrate'),
     dialogs = require('ui/dialogs'),
-    accelerometer = require('nativescript-accelerometer'),
+    accelerometer = require('nativescript-accelerometer');
     // additional requires
 
     ViewModel = new Observable({
