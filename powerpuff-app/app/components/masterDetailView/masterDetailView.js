@@ -3,8 +3,8 @@ var isInit = true,
     helpers = require('../../utils/widgets/helper'),
     navigationProperty = require('../../utils/widgets/navigation-property'),
     service = require('./masterDetailView-service'),
-    viewModel = require('./masterDetailView-view-model');
-
+    viewModel = require('./masterDetailView-view-model'),
+    Observable = require("data/observable").Observable;
 function onListViewItemTap(args) {
     var itemData = viewModel.get('listItems')[args.index];
 
