@@ -25,16 +25,22 @@ ViewModel = new Observable({
                 cancelButtonText: "Cancel",
                 actions: ['happy', 'sad', 'determined', 'wise', 'funny', 'whatever']
             };
-            
+
         dialogs.action(options)
             .then((result) => {
                 that.mood = result;
-            
-            	homeViewService.attachToAccelerometer(function() {
+
+                homeViewService.attachToAccelerometer(function () {
                     var quote = that.getQuote(that.mood);
-                    socialShare.shareText(quote, "How would you like to share your PowerPuff quote?");
+
+                    that.set('shareVisibility', 'visible');
+
                 });
             });
+    },
+
+    share: function (params) {
+        socialShare.shareText(this.quote, "How would you like to share your PowerPuff quote?");
     },
 
     getQuote: function (params) {

@@ -1,7 +1,7 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
       xmlns:widgets="utils/widgets" 
       xmlns:calendar="nativescript-telerik-ui-pro/calendar"
-      loaded="pageLoaded">
+      loaded="pageLoaded" actionBarHidden="true">
     <Page.actionBar>
         <widgets:action-bar />
     </Page.actionBar>

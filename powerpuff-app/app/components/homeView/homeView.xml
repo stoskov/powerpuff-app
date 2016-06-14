@@ -11,8 +11,8 @@
                     <Button text="Choose your mood" tap="{{ onSelectMood }}" cssClass="moodButton"/>
                     <Label text="{{'Mood:' + mood}}" cssClass="registrationlbl"/>
                     <Label text="Shake it now :P" cssClass="registrationlbl" visibility="{{ registerVisibility }}"/>   
-<!--                     <Button text="Get quote" tap="{{getQuote}}" cssClass="moodButton" /> -->
-             		<TextView editable="false" text="{{quote}}" cssClass="quotelbl" padding="8" marginTop="15" height="180"/>
+             		<TextView editable="false" text="{{quote}}" cssClass="quotelbl" padding="8" marginTop="15" height="100"/>
+                    <Button  visibility="{{ shareVisibility }}" text="Share" tap="{{share}}"  cssClass="moodButton" />
                 </StackLayout>
                 <ActivityIndicator row="1" busy="{{ isLoading }}" /> 
          	</GridLayout>
