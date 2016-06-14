@@ -4,27 +4,12 @@ var isInit = true,
     navigationProperty = require('../../utils/widgets/navigation-property'),
     // additional requires
     viewModel = require('./homeView-view-model'),
-    dialogs = require("ui/dialogs"),
-    accelerometer = require("nativescript-accelerometer"),
-    vibrator = require("nativescript-vibrate");
-
-function attachToAccelerometer() {
-    //vibrator.vibration("1000");
-    var amount = 0;
-    accelerometer.startAccelerometerUpdates(function (data) {
-        console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
-
-        if (data.x + data.y > 1) {
-            amount++;
-            if (amount > 10) {
-                vibrator.vibration("500");
-            }
-        }
-    });
-}
+    homeViewService = require('./homeView-service'),
+    dialogs = require("ui/dialogs");
 
 function pageLoaded(args) {
     var page = args.object;
+        //service = new viewService();
 
     helpers.platformInit(page);
     page.bindingContext = viewModel;
@@ -41,7 +26,7 @@ function pageLoaded(args) {
             viewModel.set("isLoading", false);    
             }, 2000);
         	
-            attachToAccelerometer();
+            homeViewService.attachToAccelerometer();
         });
 }
 

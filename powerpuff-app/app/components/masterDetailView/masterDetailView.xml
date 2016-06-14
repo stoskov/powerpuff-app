@@ -1,8 +1,16 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      xmlns:widgets="utils/widgets" 
+      xmlns:calendar="nativescript-telerik-ui-pro/calendar"
+      loaded="pageLoaded">
     <Page.actionBar>
         <widgets:action-bar />
     </Page.actionBar>
     <StackLayout>
+		<calendar:RadCalendar 
+        		id="calendar"
+                eventSource="{{ calendarEvents }}"
+                inlineEventSelected="{{ onEventSelected }}"
+                eventsViewMode="Inline" />
         <GridLayout rows="auto, *">
             <ListView row="1" items="{{ listItems }}" itemTap="onListViewItemTap">
                 <ListView.itemTemplate>
