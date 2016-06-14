@@ -202,6 +202,13 @@ TextField, TextView {
     margin: 10;
     width: 240px;
 }
+
+.moodButton {
+    background-color: #E62739;
+    margin: 10;
+    width: 240px;
+    color: #fff;
+}
 .primaryButton1 {
     color: #fff;
     width: 240px;
