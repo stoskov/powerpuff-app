@@ -5,7 +5,8 @@ var isInit = true,
     // additional requires
     viewModel = require('./homeView-view-model'),
     homeViewService = require('./homeView-service'),
-    dialogs = require("ui/dialogs");
+    dialogs = require("ui/dialogs"),
+    socialShare = require("nativescript-social-share");
 
 function pageLoaded(args) {
     var page = args.object;
@@ -26,7 +27,10 @@ function pageLoaded(args) {
             viewModel.set("isLoading", false);    
             }, 2000);
         	
-            homeViewService.attachToAccelerometer(function(){dialogs.alert("vibrated!")});
+            homeViewService.attachToAccelerometer(function() {
+                dialogs.alert("vibrated!");
+                socialShare.shareText("I love to vibrate", "How would you like to share your PowerPuff quote?");
+            });
         });
 }
 
