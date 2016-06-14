@@ -1,9 +1,28 @@
 'use strict';
 var _,
     // additional requires
+    accelerometer = require("nativescript-accelerometer"),
+    vibrator = require("nativescript-vibrate"),
     consts;
 
-function Service() {}
+// var Service() {
+
+// 	attachToAccelerometer: function () {
+//         var amount = 0;
+//         accelerometer.startAccelerometerUpdates(function (data) {
+//             console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
+
+//             if (data.x + data.y > 1) {
+//                 amount++;
+//                 if (amount > 10) {
+//                     vibrator.vibration(500);
+//                 }
+//             }
+//         });
+//     }
+// };
+
+function Service() {};
 
 // additional properties
 
