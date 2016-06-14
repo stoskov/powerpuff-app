@@ -12,7 +12,7 @@ function HomeViewService() {}
 HomeViewService.prototype = {
     vibrator_service: null,
     
-    attachToAccelerometer: function () {
+    attachToAccelerometer: function (callback) {
         var that = this;
         var oldData = null;
         accelerometer.startAccelerometerUpdates(function (data) {
@@ -26,6 +26,7 @@ HomeViewService.prototype = {
                     
                    // dialogs.alert("vibrate now");
                     vibrator.vibration(500);
+                    callback();
                 	//that.detachFromAccelerometer();
                 }
             }

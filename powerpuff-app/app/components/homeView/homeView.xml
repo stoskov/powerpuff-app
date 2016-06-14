@@ -10,7 +10,10 @@
                     <Image row="1" src='http://img2.tvtome.com/i/u/69bd905c43604c9accc7c2829ffa51d2.jpg' cssClass="logo" marginTop="0"/>
                     <Button text="Choose your mood" tap="{{ onSelectMood }}" cssClass="moodButton"/>
                     <Label text="Shake it now" cssClass="registrationlbl" visibility="{{ registerVisibility }}"/>
-<!--                     <Image row="1" src='https://cdn0.iconfinder.com/data/icons/phone-tab-settings-filled-line-1/614/476_-_Vibration_mode-128.png' cssClass="logo"/> -->
+					<Label text="{{quote}}" />
+                    <Button text="Get quote" tap="{{getQuote}}" />
+                  <!--                    
+ <Image row="1" src='https://cdn0.iconfinder.com/data/icons/phone-tab-settings-filled-line-1/614/476_-_Vibration_mode-128.png' cssClass="logo"/> -->
                 </StackLayout>
                 <ActivityIndicator row="1" busy="{{ isLoading }}" /> 
          </GridLayout>
