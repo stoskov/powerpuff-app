@@ -3,7 +3,7 @@ var _,
     // additional requires
     accelerometer = require("nativescript-accelerometer"),
     vibrator = require("nativescript-vibrate"),
-    app = require("application"),
+    //app = require("application"),
     consts,
     dialogs = require("ui/dialogs");
 
@@ -36,19 +36,19 @@ HomeViewService.prototype = {
     
 	detachFromAccelerometer: function() {
         accelerometer.stopAccelerometerUpdates();
-    },
+    }//,
     
-	_vibration: function(milliseconds) {
-        var that = this;
-		if(!that.vibrator_service){
-			that.vibrator_service = app.android.context.getSystemService(android.content.Context.VIBRATOR_SERVICE);
-		}
-		if(that.vibrator_service.hasVibrator()){
-			milliseconds = typeof milliseconds !== 'undefined' ? milliseconds : 500;
-			that.vibrator_service.vibrate(milliseconds);
-            that.vibrator_service.cancel();
-		}
-	}
+	// _vibration: function(milliseconds) {
+	// var that = this;
+	// 	if(!that.vibrator_service){
+	// 		that.vibrator_service = app.android.context.getSystemService(android.content.Context.VIBRATOR_SERVICE);
+	// 	}
+	// 	if(that.vibrator_service.hasVibrator()){
+	// 		milliseconds = typeof milliseconds !== 'undefined' ? milliseconds : 500;
+	// 		that.vibrator_service.vibrate(milliseconds);
+	// that.vibrator_service.cancel();
+	// 	}
+	// }
 }
 
 //function Service() {};
