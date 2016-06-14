@@ -17,6 +17,7 @@ ViewModel = new Observable({
     callback: true,
     quote: "",
     mood: "",
+    shareVisibility: 'collapsed',
 
     onSelectMood: function (params) {
         var that = this,
@@ -33,6 +34,8 @@ ViewModel = new Observable({
             }
 
             that.mood = result;
+
+            that.set('shareVisibility', 'collapsed');
 
             homeViewService.attachToAccelerometer(function () {
                 var quote = that.getQuote(that.mood);
