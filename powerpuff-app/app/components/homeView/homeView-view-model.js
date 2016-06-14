@@ -5,29 +5,44 @@ var ViewModel,
     dialogs = require('ui/dialogs'),
     dataService = require("../../dataProviders/data-service"),
     accelerometer = require('nativescript-accelerometer');
-    // additional requires
+// additional requires
 
-    ViewModel = new Observable({
-        isLoading: true,
-        pageTitle: 'Home View',
-        shaken: false,
-        callback: true,
-        quote: "test quote",
-        getQuote: function (params) {
-            var that = this;
+ViewModel = new Observable({
+    isLoading: true,
+    pageTitle: 'Home View',
+    shaken: false,
+    callback: true,
+    quote: "",
+    mood: "",
+    onSelectMood: function (params) {
+        var that = this,
+            options = {
+                title: "Race Selection",
+                message: "Choose your race",
+                cancelButtonText: "Cancel",
+                actions: ['happy', 'sad', 'determined', 'wise', 'funny', 'whatever']
+            };
             
-            that.isLoading = true;
-            dataService.getQuote()
-                .then(function (res) {
-                    that.quote = res.Result.Quote.Text;
-                    that.isLoading = false;
-                })
-                .catch(function (params) {
-                    that.quote = "error";
-                    that.isLoading = false;
-                })
+        dialogs.action(options)
+            .then((result) => {
+                that.mood = result;
+            });
+    },
+    getQuote: function (params) {
+        var that = this;
 
-        }
-    });
+        that.isLoading = true;
+        dataService.getQuote()
+            .then(function (res) {
+                that.quote = res.Result.Quote.Text;
+                that.isLoading = false;
+            })
+            .catch(function (params) {
+                that.quote = "error";
+                that.isLoading = false;
+            })
+
+    }
+});
 
 module.exports = ViewModel;
