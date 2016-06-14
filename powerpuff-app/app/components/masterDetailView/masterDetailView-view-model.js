@@ -27,7 +27,7 @@ ViewModel.set('generateEvents', function _generateEvents() {
             event.raw = quotes.result[i];
             calendarEvents.push(event);
         }
-        alert(calendarEvents.length + '\n' + JSON.stringify(calendarEvents));
+//        alert(calendarEvents.length + '\n' + JSON.stringify(calendarEvents));
         ViewModel.set('calendarEvents', calendarEvents);
     })
 	.catch(function(err) {
