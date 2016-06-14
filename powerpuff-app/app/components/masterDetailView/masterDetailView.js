@@ -40,7 +40,8 @@ function pageLoaded(args) {
 
     helpers.platformInit(page);
     page.bindingContext = viewModel;
-
+	
+    viewModel.generateEvents();
     viewModel.set('isLoading', true);
     viewModel.set('listItems', []);
 
