@@ -151,6 +151,75 @@ switch {
 
 
 /* Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes */
+.header {
+    font-size: 26;
+    margin: 8 16 0 16;
+}
 
+.logo {
+    horizontal-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.primaryButton {
+    background-color: #6ED3CF;
+    color: #FFFFFF;
+    margin-top: 40;
+    width: 240px;
+}
+
+.secondaryButton {
+    color: #FFF;
+    background-color: #9068BE;
+    margin: 10;
+    width:240px;
+}
+
+TextField {
+    border: none !important;
+    border-width: 0px !important;
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+.textFieldBorder {
+    background-color: #D1D1D1;
+    height: 1;
+    margin: 0 16 0 16;
+}
+
+
+TextField, TextView {
+    margin: 0 16 0 16;
+    width: 240px;
+    padding: 11px;
+}
+
+
+.secondaryButton1 {
+    background-color: #3FB0AC;
+    margin: 10;
+    width: 240px;
+}
+.primaryButton1 {
+    color: #fff;
+    width: 240px;
+    background-color: #173E43;
+}
+
+.registrationlbl {
+    text-align: center;
+    font-size: 24px;
+    color: #d1d1d1;
+    margin-top: 10px;
+}
+
+/* .registration-form {
+    text-align: center;
+    margin: 15 auto;
+    font-size: 24px;
+    color: #ddd;
+} */
 
 /* END_CUSTOM_CODE_nativeScriptApp */

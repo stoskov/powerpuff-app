@@ -1,12 +1,11 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
+<!-- <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
     <Page.actionBar>
         <widgets:action-bar />
     </Page.actionBar>
 
     <StackLayout>
+			<Image src="http://vignette3.wikia.nocookie.net/powerpuff/images/a/a7/Tumblr_lv8big5jK51qizyws.jpg/revision/latest?cb=20120508020045" cssClass="logo" stretch="none" />
 
-        <GridLayout rows="auto, auto, auto, auto, auto" columns="*, *" visibility="{{ signinVisibility }}">
-            <Label text="Email" cssClass="form-label" />
             <TextField col="1" text="{{ email }}" cssClass="form-field" />
             <StackLayout colSpan="2" cssClass="form-item-border" />
 
@@ -41,5 +40,59 @@
         <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
 
         <!-- END_CUSTOM_CODE_authenticationView -->
-    </StackLayout>
+<!--     </StackLayout> -->
+<!-- </Page> -->
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      navigatingTo="navigatingTo"
+      loaded="pageLoaded" actionBarHidden="true">
+   
+  <GridLayout>
+    <ScrollView>
+      <StackLayout>
+        <Image src="http://vignette3.wikia.nocookie.net/powerpuff/images/a/a7/Tumblr_lv8big5jK51qizyws.jpg/revision/latest?cb=20120508020045" cssClass="logo" stretch="none" />
+
+<!--         <Label text="{{ strings.loginMessage }}" margin="8 16 16 16" cssClass="header"/> -->
+
+        <TextField text="{{ email }}" hint="email" autocapitalizationType="none" autocorrect="false"/>
+        <TextField text="{{ password }}" secure="true" hint="password"/>
+        <Border cssClass="textFieldBorder" marginTop="10"/>
+
+        <Button text="Sign In" tap="{{ onSignin }}" cssClass="primaryButton"/>
+        <Button text="Register" tap="{{ onShowRegister }}" cssClass="secondaryButton"/>
+         
+          <Border cssClass="textFieldBorder" marginTop="10" visibility="{{ registerVisibility }}"/>
+         <Label text="Registration Form" cssClass="registrationlbl" visibility="{{ registerVisibility }}"/>
+          <Border cssClass="textFieldBorder" marginTop="10" visibility="{{ registerVisibility }}"/>
+        <TextField text="{{ email }}" hint="email" autocapitalizationType="none" autocorrect="false" visibility="{{ registerVisibility }}" marginTop="20"/>
+        <TextField  text="{{ password }}" hint="password" secure="true" visibility="{{ registerVisibility }}" />
+        
+          
+        <Button text="Register" tap="{{ onRegister }}" cssClass="secondaryButton1" visibility="{{ registerVisibility }}"/>
+        <Button text="Sign In" tap="{{ onShowSignin }}" cssClass="primaryButton1" visibility="{{ registerVisibility }}"/>
+            
+      </StackLayout>
+        
+<!--         <GridLayout rows="auto, auto, auto, auto, auto" columns="*, *" visibility="{{ registerVisibility }}"> -->
+<!--             <Label text="Email" cssClass="form-label" /> -->
+<!--             <TextField col="1" text="{{ email }}" cssClass="form-field" />
+            <StackLayout colSpan="2" cssClass="form-item-border" />
+
+            <Label row="1" text="Password" cssClass="form-label" />
+            <TextField row="1" col="1" text="{{ password }}" secure="true" cssClass="form-field" />
+            <StackLayout row="1" colSpan="2" cssClass="form-item-border" />
+
+
+            <Label row="2" text="Name" cssClass="form-label" />
+            <TextField row="2" col="1" text="{{ displayName }}" cssClass="form-field" />
+            <StackLayout row="2" colSpan="2" cssClass="form-item-border" />
+
+
+            <widgets:button row="3" colSpan="2" text="Register" tap="{{ onRegister }}" />
+            <Label row="4" colSpan="2" text="Sign In" tap="{{ onShowSignin }}" cssClass="form-link" /> -->
+<!--         </GridLayout> -->
+    </ScrollView>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
 </Page>
