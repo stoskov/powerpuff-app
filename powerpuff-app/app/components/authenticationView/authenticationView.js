@@ -2,11 +2,8 @@
 var isInit = true,
     helpers = require('../../utils/widgets/helper'),
     navigationProperty = require('../../utils/widgets/navigation-property'),
-
     service = require('./authenticationView-service'),
     localSettings = require('application-settings'),
-    // additional requires
-
     viewModel = require('./authenticationView-view-model');
 
 function validateData(data) {
