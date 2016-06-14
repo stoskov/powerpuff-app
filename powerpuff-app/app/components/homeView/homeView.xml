@@ -1,18 +1,29 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
       xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer" 
       xmlns:widgets="utils/widgets" 
-      loaded="pageLoaded">
-    <drawer:RadSideDrawer>
+      loaded="pageLoaded" actionBarHidden="true">
+    <drawer:RadSideDrawer id="SideDrawer" class="page-content">
         <drawer:RadSideDrawer.mainContent>
+            <ScrollView>
             <GridLayout rows="auto, *">
                 <StackLayout row="1">
-                    <Image row="1" src='~/images/phone.png'/>                  
+                    <Image row="1" src='http://img2.tvtome.com/i/u/69bd905c43604c9accc7c2829ffa51d2.jpg' cssClass="logo" marginTop="0"/>
+                    <Button text="Choose your mood" tap="{{ onSelectMood }}" cssClass="moodButton"/>
+                    <Label text="{{'Mood:' + mood}}" />
+                    <Label text="Shake it now" cssClass="registrationlbl" visibility="{{ registerVisibility }}"/>
+					<Label text="{{quote}}" />
+                    <Button text="Get quote" tap="{{getQuote}}" cssClass="moodButton" />
+             
                 </StackLayout>
                 <ActivityIndicator row="1" busy="{{ isLoading }}" /> 
          </GridLayout>
+            </ScrollView>
         </drawer:RadSideDrawer.mainContent>
         <drawer:RadSideDrawer.drawerContent>
-            <widgets:drawer-content />
+            <stack-layout class="drawer-content">
+            	<widgets:drawer-content />
+                <Image row="1" src='~/images/mojo.png' cssClass="logo"/>
+             </stack-layout> 
         </drawer:RadSideDrawer.drawerContent>
     </drawer:RadSideDrawer>
 </Page>
