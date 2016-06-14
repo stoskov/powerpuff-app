@@ -4,7 +4,7 @@ var isInit = true,
     navigationProperty = require('../../utils/widgets/navigation-property'),
     // additional requires
     viewModel = require('./homeView-view-model'),
-    homeViewService = require('./homeView-service'),
+    // homeViewService = require('./homeView-service'),
     dialogs = require("ui/dialogs"),
     socialShare = require("nativescript-social-share");
 
@@ -27,10 +27,10 @@ function pageLoaded(args) {
             viewModel.set("isLoading", false);    
             }, 2000);
         	
-            homeViewService.attachToAccelerometer(function() {
-                dialogs.alert("vibrated!");
-                socialShare.shareText("I love to vibrate", "How would you like to share your PowerPuff quote?");
-            });
+            // homeViewService.attachToAccelerometer(function() {
+            //     dialogs.alert("vibrated!");
+            //     socialShare.shareText("I love to vibrate", "How would you like to share your PowerPuff quote?");
+            // });
         });
 }
 

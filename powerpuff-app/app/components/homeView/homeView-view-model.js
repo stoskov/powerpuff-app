@@ -4,7 +4,9 @@ var ViewModel,
     //vibrator = require('nativescript-vibrate'),
     dialogs = require('ui/dialogs'),
     dataService = require("../../dataProviders/data-service"),
-    accelerometer = require('nativescript-accelerometer');
+    accelerometer = require('nativescript-accelerometer'),
+    homeViewService = require('./homeView-service'),
+    socialShare = require("nativescript-social-share");
 // additional requires
 
 ViewModel = new Observable({
@@ -14,11 +16,12 @@ ViewModel = new Observable({
     callback: true,
     quote: "",
     mood: "",
+
     onSelectMood: function (params) {
         var that = this,
             options = {
-                title: "Race Selection",
-                message: "Choose your race",
+                title: "Mood Selection",
+                message: "Choose your mood",
                 cancelButtonText: "Cancel",
                 actions: ['happy', 'sad', 'determined', 'wise', 'funny', 'whatever']
             };
@@ -26,8 +29,14 @@ ViewModel = new Observable({
         dialogs.action(options)
             .then((result) => {
                 that.mood = result;
+            
+            	homeViewService.attachToAccelerometer(function() {
+                    var quote = that.getQuote(that.mood);
+                    socialShare.shareText(quote, "How would you like to share your PowerPuff quote?");
+                });
             });
     },
+
     getQuote: function (params) {
         var that = this;
 
@@ -40,8 +49,8 @@ ViewModel = new Observable({
             .catch(function (params) {
                 that.quote = "error";
                 that.isLoading = false;
-            })
-
+            });
+        return that.quote;
     }
 });
 
