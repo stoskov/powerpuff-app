@@ -6,8 +6,10 @@
         <drawer:RadSideDrawer.mainContent>
             <GridLayout rows="auto, *">
                 <StackLayout row="1">
-                    <Image row="1" src='~/images/phone.png'/>                  
-                </StackLayout>
+                    <Image row="1" src='~/images/phone.png'/>  
+                    <Label text="{{quote}}" />
+                    <Button text="Get quote" tap="{{getQuote}}" />
+                </StackLayout>                
                 <ActivityIndicator row="1" busy="{{ isLoading }}" /> 
          </GridLayout>
         </drawer:RadSideDrawer.mainContent>

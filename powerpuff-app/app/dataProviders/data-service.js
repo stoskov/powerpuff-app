@@ -8,6 +8,7 @@ function generateSampleQuotes() {
 }
 
 function getQuote(mood) {
+    mood = mood || "funny";
     return dataProvider.businessLogic.invokeCloudFunction("GetQuote", {
         mood: mood
     });
