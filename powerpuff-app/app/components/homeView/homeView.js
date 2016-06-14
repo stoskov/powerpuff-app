@@ -41,5 +41,5 @@ function pageLoaded(args) {
 exports.pageLoaded = pageLoaded;
 
 exports.navigatingFrom = function (args) {
-	alert(homeViewService.detachFromAccelerometer());
+	homeViewService.detachFromAccelerometer();
 }
