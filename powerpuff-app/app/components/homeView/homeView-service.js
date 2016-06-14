@@ -24,31 +24,38 @@ HomeViewService.prototype = {
 
         accelerometerAttached = true;
 
-        accelerometer.startAccelerometerUpdates(function (data) {
-//            console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
-            
-            if (oldData) {
-                //dialogs.alert("old data x: " + oldData.x + " new data x:" + data.x + " old data y: " + oldData.y + " new data y:" + data.y  + "old data z: " + oldData.z + " new data z:" + data.z);
-                var treshold = 1.3;
-                if(Math.abs(oldData.x - data.x) > treshold || Math.abs(oldData.y - data.y) > treshold || Math.abs(oldData.z - data.z) > treshold) {
-                    //dialogs.alert("stopAccelerometerUpdates");
-                    accelerometer.stopAccelerometerUpdates();
-                    timerId = setTimeout(function() { that.attachToAccelerometer(callback)}, 3000);
+        try {
+            accelerometer.startAccelerometerUpdates(function (data) {
+    //            console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
+                
+                if (oldData) {
+                    //dialogs.alert("old data x: " + oldData.x + " new data x:" + data.x + " old data y: " + oldData.y + " new data y:" + data.y  + "old data z: " + oldData.z + " new data z:" + data.z);
+                    var treshold = 1.3;
+                    if(Math.abs(oldData.x - data.x) > treshold || Math.abs(oldData.y - data.y) > treshold || Math.abs(oldData.z - data.z) > treshold) {
+                        //dialogs.alert("stopAccelerometerUpdates");
+                        that.detachFromAccelerometer();
+                        timerId = setTimeout(function() { that.attachToAccelerometer(callback)}, 3000);
 
-                    console.log("Old x: " + oldData.x + "y: " + oldData.y + "z: " + oldData.z);
-                    console.log("New x: " + data.x + "y: " + data.y + "z: " + data.z);
-                   // dialogs.alert("vibrate now");
-                    vibrator.vibration(500);
-                    callback();
-                	//that.detachFromAccelerometer();
+                        console.log("Old x: " + oldData.x + "y: " + oldData.y + "z: " + oldData.z);
+                        console.log("New x: " + data.x + "y: " + data.y + "z: " + data.z);
+                    // dialogs.alert("vibrate now");
+                        vibrator.vibration(500);
+                        callback();
+                        //that.detachFromAccelerometer();
+                    }
                 }
-            }
-            
-            oldData = data;});
+                
+                oldData = data;});
+        }
+        catch (e) {
+
+        }
     },
     
 	detachFromAccelerometer: function() {
         try {
+            accelerometerAttached = false;
+
             if (timeoutId) {
                 clearTimeout(timeoutId);
             }
