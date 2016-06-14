@@ -16,14 +16,18 @@ HomeViewService.prototype = {
         var that = this;
         var oldData = null;
         accelerometer.startAccelerometerUpdates(function (data) {
-            console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
+//            console.log("x: " + data.x + "y: " + data.y + "z: " + data.z);
             
             if (oldData) {
                 //dialogs.alert("old data x: " + oldData.x + " new data x:" + data.x + " old data y: " + oldData.y + " new data y:" + data.y  + "old data z: " + oldData.z + " new data z:" + data.z);
-                if(Math.abs(oldData.x - data.x) > 0.05 || Math.abs(oldData.y - data.y) > 0.05 || Math.abs(oldData.z - data.z) > 0.05) {
+                var treshold = 1.3;
+                if(Math.abs(oldData.x - data.x) > treshold || Math.abs(oldData.y - data.y) > treshold || Math.abs(oldData.z - data.z) > treshold) {
                     //dialogs.alert("stopAccelerometerUpdates");
                     accelerometer.stopAccelerometerUpdates();
-                    
+                    setTimeout(function() { that.attachToAccelerometer(callback)}, 3000);
+
+                    console.log("Old x: " + oldData.x + "y: " + oldData.y + "z: " + oldData.z);
+                    console.log("New x: " + data.x + "y: " + data.y + "z: " + data.z);
                    // dialogs.alert("vibrate now");
                     vibrator.vibration(500);
                     callback();
