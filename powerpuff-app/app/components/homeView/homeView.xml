@@ -9,14 +9,14 @@
                 <StackLayout row="1">
                     <Image row="1" src='http://img2.tvtome.com/i/u/69bd905c43604c9accc7c2829ffa51d2.jpg' cssClass="logo" marginTop="0"/>
                     <Button text="Choose your mood" tap="{{ onSelectMood }}" cssClass="moodButton"/>
-                    <Label text="{{'Mood:' + mood}}" />
-                    <Label text="Shake it now" cssClass="registrationlbl" visibility="{{ registerVisibility }}"/>
-					<Label text="{{quote}}" />
-                    <Button text="Get quote" tap="{{getQuote}}" cssClass="moodButton" />
-             
+                    <Label text="{{'Mood:' + mood}}" cssClass="registrationlbl"/>
+                    <Label text="Shake it now :P" cssClass="registrationlbl" visibility="{{ registerVisibility }}"/>   
+<!--                     <Button text="Get quote" tap="{{getQuote}}" cssClass="moodButton" /> -->
+             		<TextView editable="false" text="{{quote}}" cssClass="quotelbl" padding="8" marginTop="15" height="180"/>
                 </StackLayout>
                 <ActivityIndicator row="1" busy="{{ isLoading }}" /> 
-         </GridLayout>
+         	</GridLayout>
+            
             </ScrollView>
         </drawer:RadSideDrawer.mainContent>
         <drawer:RadSideDrawer.drawerContent>
