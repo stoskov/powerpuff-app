@@ -59,17 +59,7 @@
         <Border cssClass="textFieldBorder" marginTop="10"/>
 
         <Button text="Sign In" tap="{{ onSignin }}" cssClass="primaryButton"/>
-        <Button text="Register" tap="{{ onShowRegister }}" cssClass="secondaryButton"/>
-         
-          <Border cssClass="textFieldBorder" marginTop="10" visibility="{{ registerVisibility }}"/>
-         <Label text="Registration Form" cssClass="registrationlbl" visibility="{{ registerVisibility }}"/>
-          <Border cssClass="textFieldBorder" marginTop="10" visibility="{{ registerVisibility }}"/>
-        <TextField text="{{ email }}" hint="email" autocapitalizationType="none" autocorrect="false" visibility="{{ registerVisibility }}" marginTop="20"/>
-        <TextField  text="{{ password }}" hint="password" secure="true" visibility="{{ registerVisibility }}" />
-        
-          
-        <Button text="Register" tap="{{ onRegister }}" cssClass="secondaryButton1" visibility="{{ registerVisibility }}"/>
-        <Button text="Sign In" tap="{{ onShowSignin }}" cssClass="primaryButton1" visibility="{{ registerVisibility }}"/>
+        <Button text="Register" tap="{{ onRegister }}" cssClass="secondaryButton"/>
             
       </StackLayout>
         

@@ -12,6 +12,14 @@ button {
     horizontal-align: stretch;
 }
 
+.quotelbl {
+    font-size: 18px;
+    color: #6ED3CF;
+    width: 300px;
+    overflow: auto;
+    text-overflow: clip;
+}
+
 .drawer-content {
   background-color: #053140;
   color: white;

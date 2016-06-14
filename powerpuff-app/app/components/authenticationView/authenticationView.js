@@ -48,7 +48,9 @@ function registerSuccess() {
 function onRegister(data) {
     if (validateData(data)) {
         data.email = data.email.toLowerCase();
-        service.register(data, registerSuccess, authError);
+        service.register(data, function () {
+            onSignin(data);
+        }, authError);
     }
 }
 
