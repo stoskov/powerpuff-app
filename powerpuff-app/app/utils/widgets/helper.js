@@ -1,6 +1,8 @@
 'use strict';
 var frame = require('ui/frame'),
-    platform = require('platform');
+    platform = require('platform'),
+    settings = require("../../settings.json"),
+    dataProvider = require("../../dataProviders/powerpuffApp");
 
 function platformInit(page) {
     var top = frame.topmost(),
@@ -66,8 +68,22 @@ function processImage(img, dbConfiguration) {
     return img;
 }
 
+function checkAuthentication() {
+    return dataProvider.Users.currentUser()
+        .then(function (data) {
+            if (!data.result) {
+                navigate(settings.loginModule);
+                return Promise.reject();
+            }
+        })
+        .catch(function () {
+            navigate(settings.loginModule);
+        });
+}
+
 exports.back = back;
 exports.navigate = navigate;
 exports.platformInit = platformInit;
 exports.onOpenUrl = onOpenUrl;
 exports.processImage = processImage;
+exports.checkAuthentication = checkAuthentication;

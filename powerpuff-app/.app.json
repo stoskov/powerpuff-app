@@ -3,35 +3,6 @@
   "views": [
     {
       "type": "NativeScript:view",
-      "name": "authenticationView",
-      "components": [
-        {
-          "type": "NativeScript:authentication",
-          "name": "authenticationViewModel",
-          "dataProvider": "powerpuffApp",
-          "emailLabel": "Email",
-          "passwordLabel": "Password",
-          "signinLabel": "Sign In",
-          "signinRedirect": "homeView",
-          "enableRegistration": true,
-          "gotoRegisterLabel": "Register",
-          "registerEmailLabel": "Email",
-          "registerPasswordLabel": "Password",
-          "registerNameLabel": "Name",
-          "registerLabel": "Register",
-          "registerRedirect": "homeView",
-          "gotoSigninLabel": "Sign In",
-          "enableLogout": true,
-          "logoutLabel": "Sign Out",
-          "enableRememberme": false
-        }
-      ],
-      "title": "Authentication",
-      "addToNavigation": true,
-      "icon": "contacts"
-    },
-    {
-      "type": "NativeScript:view",
       "name": "homeView",
       "components": [],
       "title": "Home View",
@@ -64,6 +35,33 @@
       "title": "Quotes List",
       "addToNavigation": true,
       "icon": "organize"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "authenticationView",
+      "components": [
+        {
+          "type": "NativeScript:authentication",
+          "name": "authenticationViewModel",
+          "dataProvider": "powerpuffApp",
+          "emailLabel": "Email",
+          "passwordLabel": "Password",
+          "signinLabel": "Sign In",
+          "signinRedirect": "homeView",
+          "enableRegistration": true,
+          "gotoRegisterLabel": "Register",
+          "registerEmailLabel": "Email",
+          "registerPasswordLabel": "Password",
+          "registerNameLabel": "Name",
+          "registerLabel": "Register",
+          "registerRedirect": "homeView",
+          "gotoSigninLabel": "Sign In",
+          "enableLogout": false,
+          "enableRememberme": false
+        }
+      ],
+      "title": "Authentication",
+      "addToNavigation": false
     }
   ],
   "dataProviders": [

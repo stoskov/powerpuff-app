@@ -5,9 +5,7 @@
     <Page.actionBar>
         <widgets:action-bar />
     </Page.actionBar>
-
     <StackLayout>
-
 		<calendar:RadCalendar 
         		id="calendar"
                 eventSource="{{ calendarEvents }}"
@@ -18,12 +16,9 @@
                 <ListView.itemTemplate>
                     <StackLayout>
                         <GridLayout columns="*" cssClass="padded-label">
-
-
                             <StackLayout col="2" cssClass="padded-label-stack">
                                 <Label col="0" text="{{ header }}" cssClass="title-label" textWrap="true" />
                             </StackLayout>
-
                         </GridLayout>
                         <!-- additional view content -->
                     </StackLayout>
@@ -31,10 +26,5 @@
             </ListView>
             <ActivityIndicator row="1" busy="{{ isLoading }}" />
         </GridLayout>
-        <!-- additional view content -->
-
-        <!-- START_CUSTOM_CODE_masterDetailView -->
-        <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-        <!-- END_CUSTOM_CODE_masterDetailView -->
     </StackLayout>
 </Page>

@@ -1,0 +1,4 @@
+ {
+     "loginModule": "components/authenticationView/authenticationView",
+     "mainModule": "components/homeView/homeView"
+ }

@@ -3,15 +3,12 @@ var ViewModel,
     calendarModule = require("nativescript-telerik-ui-pro/calendar"),
     Observable = require('data/observable').Observable;
 
-// additional requires
-
 ViewModel = new Observable({
 
     pageTitle: 'Quotes List',
 
     isLoading: false,
     listItems: []
-    // additional properties
 });
 
 // START_CUSTOM_CODE_masterDetailView

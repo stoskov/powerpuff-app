@@ -2,10 +2,7 @@
 var isInit = true,
     helpers = require('../../utils/widgets/helper'),
     navigationProperty = require('../../utils/widgets/navigation-property'),
-
     service = require('./masterDetailView-service'),
-    // additional requires
-
     viewModel = require('./masterDetailView-view-model');
 
 function onListViewItemTap(args) {
@@ -62,13 +59,9 @@ function pageLoaded(args) {
             var itemsList = [];
 
             result.forEach(function(item) {
-
                 flattenLocationProperties(item);
-
                 itemsList.push({
-
                     header: item.DisplayName,
-
                     // singleItem properties
                     details: item
                 });
@@ -80,17 +73,10 @@ function pageLoaded(args) {
         .catch(function onCatch() {
             viewModel.set('isLoading', false);
         });
-    // additional pageLoaded
 
     if (isInit) {
         isInit = false;
-
-        // additional pageInit
     }
 }
 
-// START_CUSTOM_CODE_masterDetailView
-// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
-
-// END_CUSTOM_CODE_masterDetailView
 exports.pageLoaded = pageLoaded;
