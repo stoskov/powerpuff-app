@@ -10,9 +10,9 @@
         		id="calendar"
                 eventSource="{{ calendarEvents }}"
                 inlineEventSelected="{{ onEventSelected }}"
-                eventsViewMode="Inline" />
+                eventsViewMode="Inline" /> <!-- -->
         <GridLayout rows="auto, *">
-            <ListView row="1" items="{{ listItems }}" itemTap="onListViewItemTap">
+            <ListView row="1" items="{{ calendarEvents }}" itemTap="onListViewItemTap">
                 <ListView.itemTemplate>
                     <StackLayout>
                         <GridLayout columns="*" cssClass="padded-label">
