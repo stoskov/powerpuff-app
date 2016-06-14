@@ -1,0 +1,12 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+    shownModally="onShownModally"
+    loaded="onPageLoaded">
+  <ListView items="{{ moodItems }}" itemTap="onMoodSelected">
+    <ListView.itemTemplate>
+        <StackLayout orientation="horizontal">
+            <Image src="{{ img }}" width="64" height="64" marginLeft="10" />
+            <Label text="{{ label }}" textWrap="true" class="title" width="320" />
+        </StackLayout>
+    </ListView.itemTemplate>
+  </ListView>
+</Page>
