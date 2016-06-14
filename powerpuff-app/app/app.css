@@ -12,6 +12,21 @@ button {
     horizontal-align: stretch;
 }
 
+.drawer-content {
+  background-color: #053140;
+  color: white;
+/*   padding-top: 20; */
+}
+
+.drawer-content Label {
+  font-size: 18px;
+  margin: 10 0 15 6;
+}
+
+.page-content {
+    background-color: white;
+}
+
 image,
 activityindicator {
     horizontal-align: center;
