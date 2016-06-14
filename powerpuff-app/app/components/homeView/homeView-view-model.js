@@ -49,7 +49,7 @@ ViewModel = new Observable({
         that.isLoading = true;
         dataService.getQuote()
             .then(function (res) {
-                that.quote = res.Result.Quote.Text;
+                that.quote = "\"" + res.Result.Quote.Text + "\"" + "\n\n" + res.Result.Quote.Author;
                 that.isLoading = false;
             })
             .catch(function (params) {
