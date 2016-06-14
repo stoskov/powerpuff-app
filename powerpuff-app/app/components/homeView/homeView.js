@@ -4,7 +4,7 @@ var isInit = true,
     navigationProperty = require('../../utils/widgets/navigation-property'),
     // additional requires
     viewModel = require('./homeView-view-model'),
-    // homeViewService = require('./homeView-service'),
+    homeViewService = require('./homeView-service'),
     dialogs = require("ui/dialogs"),
     socialShare = require("nativescript-social-share");
 
@@ -39,3 +39,7 @@ function pageLoaded(args) {
 
 // END_CUSTOM_CODE_homeView
 exports.pageLoaded = pageLoaded;
+
+exports.navigatingFrom = function (args) {
+	alert(homeViewService.detachFromAccelerometer());
+}

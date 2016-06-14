@@ -39,7 +39,11 @@ HomeViewService.prototype = {
     },
     
 	detachFromAccelerometer: function() {
-        accelerometer.stopAccelerometerUpdates();
+        try {
+	        accelerometer.stopAccelerometerUpdates();
+        } catch (e) {
+            console.log("Error stopping accelerometer: " + e);
+        }
     }//,
     
 	// _vibration: function(milliseconds) {
